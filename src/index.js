@@ -21,9 +21,7 @@ const client = new Client({
 client.on('ready', () => console.log(`Bot está conectado como ${client.user.tag}`));
 
 client.on('messageCreate', async (message) => {
-  if (message.author.tag !== "Naree#4654") return;
-  console.log("Mensaje: ", message.content);
-  console.log("Autor: ", message.author.tag);
+  console.log(`${message.author.tag}: ${message.content}`);
 
   const regex = /subiste a nivel (\d+)/i;
   const found = message.content.match(regex);
@@ -39,7 +37,7 @@ client.on('messageCreate', async (message) => {
 
   const embed = new EmbedBuilder()
     .setColor('#0099ff')
-    .setTitle(`¡Subió de nivel!`)
+    .setTitle(`¡Felicidades!`)
     .setDescription(`${user} ha subido a nivel ${level}!`)
     .setThumbnail(`attachment://${rango.img}`)
     .setTimestamp();
